@@ -31,3 +31,4 @@ server/.env
 node_modules
 dist
 dev-dist
+.env.example
