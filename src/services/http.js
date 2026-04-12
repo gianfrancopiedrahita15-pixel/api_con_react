@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base URL centralizada para no repetir la ruta de la API en cada componente.
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
 
 // Cliente dedicado a autenticacion: login, register y perfil.
 export const authApi = axios.create({

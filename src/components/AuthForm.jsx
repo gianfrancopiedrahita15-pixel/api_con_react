@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { authApi } from '../services/http';
+import { API_BASE_URL, authApi } from '../services/http';
 
 const initialState = { name: '', email: '', password: '' };
 
@@ -67,7 +67,7 @@ export const AuthForm = () => {
       navigate('/dashboard');
     } catch (err) {
       if (!err.response) {
-        showAlertError('No pudimos conectar con el servidor. Verifica que el backend este corriendo en http://localhost:4000.');
+        showAlertError(`No pudimos conectar con el servidor. Verifica que el backend responda en ${API_BASE_URL}.`);
       } else {
         showAlertError(err.response?.data?.message || 'Ocurrio un error al procesar la solicitud.');
       }
