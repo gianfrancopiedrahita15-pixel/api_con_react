@@ -23,6 +23,14 @@ export const HomePage = () => {
               <a className="button ghost" href="#api">
                 Ver API
               </a>
+              <a
+                className="button ghost repo-link"
+                href="https://github.com/gianfrancopiedrahita15-pixel/api_con_react"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
             </div>
             <div className="hero-proof">
               <span>Registro y login</span>

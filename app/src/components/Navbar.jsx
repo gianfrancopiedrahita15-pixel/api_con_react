@@ -22,6 +22,14 @@ export const Navbar = () => {
       </nav>
 
       <div className="topbar-links">
+        <a
+          className="button ghost repo-link"
+          href="https://github.com/gianfrancopiedrahita15-pixel/api_con_react"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Ver repo
+        </a>
         {isAuthenticated ? (
           <Link className="button ghost" to="/dashboard">
             Ir a mis gastos

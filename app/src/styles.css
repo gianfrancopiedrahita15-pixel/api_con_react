@@ -172,6 +172,11 @@ textarea {
   border: 1px solid rgba(251, 113, 133, 0.28);
 }
 
+.repo-link {
+  color: var(--primary);
+  font-weight: 600;
+}
+
 .hero,
 .auth-page,
 .expense-layout,
