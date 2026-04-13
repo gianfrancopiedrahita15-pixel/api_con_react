@@ -26,8 +26,6 @@ dist-ssr
 
 
 
-.env
-server/.env
 node_modules
 dist
 dev-dist
