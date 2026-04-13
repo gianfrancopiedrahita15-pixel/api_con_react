@@ -8,16 +8,35 @@ import expenseRoutes from './routes/expenseRoutes.js';
 dotenv.config();
 
 const app = express();
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  ...(process.env.CLIENT_URLS?.split(',').map((origin) => origin.trim()) || []),
+].filter(Boolean);
 
 // Habilita CORS para que el frontend pueda consumir la API desde Vite.
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error(`Origen no permitido por CORS: ${origin}`));
+    },
   }),
 );
 
 // Permite leer JSON enviado desde formularios y peticiones Axios.
 app.use(express.json());
+
+// Endpoint simple para comprobar si la API y la conexion a Mongo estan vivas.
+app.get('/', (_req, res) => {
+  res.json({
+    ok: true,
+    message: 'Backend de SIS Gastos activo',
+    health: '/api/health',
+  });
+});
 
 // Endpoint simple para comprobar si la API y la conexion a Mongo estan vivas.
 app.get('/api/health', (_req, res) => {
