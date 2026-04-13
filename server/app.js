@@ -1,11 +1,14 @@
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
-import { isDatabaseReady } from './config/db.js';
+import { isDatabaseReady, connectDB } from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import expenseRoutes from './routes/expenseRoutes.js';
 
 dotenv.config();
+
+// Inicia la conexion a la base de datos (vital para entornos Serverless como Vercel)
+connectDB();
 
 const app = express();
 const allowedOrigins = [

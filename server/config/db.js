@@ -2,6 +2,9 @@ import mongoose from 'mongoose';
 
 export const connectDB = async () => {
   try {
+    if (mongoose.connection.readyState >= 1) {
+      return true;
+    }
     // Abre la conexion principal hacia MongoDB Atlas con un timeout razonable.
     await mongoose.connect(process.env.MONGODB_URI, {
       serverSelectionTimeoutMS: 10000,

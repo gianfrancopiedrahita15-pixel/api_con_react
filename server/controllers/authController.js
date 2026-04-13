@@ -37,7 +37,8 @@ export const registerUser = async (req, res) => {
       token: generateToken(user._id.toString()),
       user: normalizeUser(user),
     });
-  } catch {
+  } catch (error) {
+    console.error('Error en registerUser:', error);
     return res.status(500).json({ message: 'No se pudo registrar el usuario' });
   }
 };
@@ -69,7 +70,8 @@ export const loginUser = async (req, res) => {
       token: generateToken(user._id.toString()),
       user: normalizeUser(user),
     });
-  } catch {
+  } catch (error) {
+    console.error('Error en loginUser:', error);
     return res.status(500).json({ message: 'No se pudo iniciar sesion' });
   }
 };
